@@ -1,4 +1,5 @@
 const slides = document.getElementsByClassName('carousel-item')
+const indicators = document.getElementsByClassName('indicator')
 const nextBtn = document.getElementById('carousel-btn-next')
 const prevBtn = document.getElementById('carousel-btn-prev')
 const checkbox = document.getElementById('checkbox')
@@ -13,14 +14,17 @@ prevBtn.addEventListener('click', moveToPrevSlide)
 checkbox.addEventListener('change', () => {
     document.body.classList.toggle('dark-mode')
     document.toggle.classList.toggle('dark-mode')
-    document.img.classList.remove('depth')
-    document.img.classList.add('depth-dark')
+    slides.classList.remove('depth')
+    slides.classList.add('depth-dark')
 })
 
 function hideAllSlides() {
     for (const slide of slides) {
         slides[slidePosition].classList.remove('carousel-item-visible')
         slides[slidePosition].classList.add('carousel-item-hidden')
+    }
+    for (const indicator of indicators) {
+        indicators[slidePosition].classList.remove('indicator-active')
     }
 }
 
@@ -32,6 +36,7 @@ function moveToNextSlide() {
         slidePosition++
     }
     slides[slidePosition].classList.add('carousel-item-visible')
+    indicators[slidePosition].classList.add('indicator-active')
 }
 
 function moveToPrevSlide() {
@@ -42,4 +47,5 @@ function moveToPrevSlide() {
         slidePosition--
     }
     slides[slidePosition].classList.add('carousel-item-visible')
+    indicators[slidePosition].classList.add('indicator-active')
 }
